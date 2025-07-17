@@ -97,8 +97,8 @@ vim.keymap.set("n", "<leader>c", ":nohlsearch<CR>", { desc = "Clear search highl
 vim.keymap.set("n", "Y", "y$", { desc = "Yank to end of line" })
 
 -- Center screen when jumping
-vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
-vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
+vim.keymap.set("n", "n", "nzzzv<cmd>lua UpdateSearchCount()<CR>", { desc = "Next search result (centered)" })
+vim.keymap.set("n", "N", "Nzzzv<cmd>lua UpdateSearchCount()<CR>", { desc = "Previous search result (centered)" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
 
@@ -180,6 +180,24 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end
   end,
 })
+
+-- Update search count
+function UpdateSearchCount()
+  local maxcount = 1024
+  local searchcount = vim.fn.searchcount({maxcount = maxcount})
+  local output = ""
+  if searchcount.incomplete == 0 then
+      print("Match " .. searchcount.current .. "/" .. searchcount.total)
+  elseif searchcount.incomplete == 1 then
+      print("Timeout")
+  else -- searchcount.incomplete == 2
+      if searchcount.current >= maxcount+1 then
+        print("Match " .. ">" .. maxcount .. "/" .. ">" .. maxcount)
+      else
+        print("Match " .. searchcount.current .. "/" .. ">" .. maxcount)
+      end
+  end
+end
 
 -- Auto-close terminal when process exits
 vim.api.nvim_create_autocmd("TermClose", {
