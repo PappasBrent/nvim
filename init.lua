@@ -157,6 +157,15 @@ local function SetTabAndIndent(x)
   vim.opt.softtabstop = x
 end
 
+-- Filetype-specific settings
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup,
+  pattern = { "lua" },
+  callback = function()
+    SetTabAndIndent(2)
+  end,
+})
+
 -- Copy Full File-Path
 vim.keymap.set("n", "<leader>pa", function()
 	local path = vim.fn.expand("%:p")
