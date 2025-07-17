@@ -150,6 +150,13 @@ vim.keymap.set("n", "<leader>rc", ":e ~/.config/nvim/init.lua<CR>", { desc = "Ed
 -- USEFUL FUNCTIONS
 -- ============================================================================
 
+-- Set tab size and indentation width
+local function SetTabAndIndent(x)
+  vim.opt.tabstop = x
+  vim.opt.shiftwidth = x
+  vim.opt.softtabstop = x
+end
+
 -- Copy Full File-Path
 vim.keymap.set("n", "<leader>pa", function()
 	local path = vim.fn.expand("%:p")
