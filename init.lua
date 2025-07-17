@@ -3,7 +3,7 @@
 -- author: Radley E. Sidwell-lewis
 -- ================================================================================================
 
--- theme & transparency
+-- Theme & transparency
 -- vim.cmd.colorscheme("unokai")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
