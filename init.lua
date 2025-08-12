@@ -570,3 +570,10 @@ local function setup_dynamic_statusline()
 end
 
 setup_dynamic_statusline()
+vim.pack.add({
+    "https://github.com/catppuccin/nvim",           -- Color theme
+    "https://github.com/mason-org/mason.nvim",      -- LSP management
+    "https://github.com/tpope/vim-fugitive",        -- Git integration
+    "https://github.com/lewis6991/gitsigns.nvim",   -- Git signs
+})
+
