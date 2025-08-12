@@ -569,6 +569,11 @@ local function setup_dynamic_statusline()
 end
 
 setup_dynamic_statusline()
+
+-- ============================================================================
+-- PLUGINS
+-- ============================================================================
+
 vim.pack.add({
     "https://github.com/catppuccin/nvim",           -- Color theme
     "https://github.com/mason-org/mason.nvim",      -- LSP management
