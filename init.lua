@@ -582,3 +582,5 @@ vim.pack.add({
 })
 
 vim.cmd.colorscheme("catppuccin-frappe")
+require("mason").setup()
+
