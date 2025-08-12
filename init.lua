@@ -156,6 +156,9 @@ local function SetTabAndIndent(x)
   vim.opt.softtabstop = x
 end
 
+-- Basic autocommands
+local augroup = vim.api.nvim_create_augroup("UserConfig", {})
+
 -- Filetype-specific settings
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup,
@@ -171,9 +174,6 @@ vim.keymap.set("n", "<leader>pa", function()
 	vim.fn.setreg("+", path)
 	print("file:", path)
 end)
-
--- Basic autocommands
-local augroup = vim.api.nvim_create_augroup("UserConfig", {})
 
 -- Highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
