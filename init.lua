@@ -145,6 +145,10 @@ vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position"
 -- Quick config editing
 vim.keymap.set("n", "<leader>rc", ":e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
 
+-- Enable omnicomplete by default
+vim.opt.completeopt = { "menuone", "noselect", "popup" } 
+
+
 -- ============================================================================
 -- USEFUL FUNCTIONS
 -- ============================================================================
@@ -593,5 +597,7 @@ require("nvim-surround").setup()
 -- We forego the use of lspconfig and instead configure our LSPs manually in
 -- the lsp/ directory.
 
-vim.lsp.enable({"lua_ls"})
-
+vim.lsp.enable({
+  "clangd",
+  "lua_ls",
+})
