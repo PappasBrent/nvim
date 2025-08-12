@@ -200,7 +200,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 function UpdateSearchCount()
   local maxcount = 1024
   local searchcount = vim.fn.searchcount({maxcount = maxcount})
-  local output = ""
   if searchcount.incomplete == 0 then
       print("Match " .. searchcount.current .. "/" .. searchcount.total)
   elseif searchcount.incomplete == 1 then
