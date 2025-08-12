@@ -584,3 +584,12 @@ vim.pack.add({
 vim.cmd.colorscheme("catppuccin-frappe")
 require("mason").setup()
 
+-- ============================================================================
+-- LSP
+-- ============================================================================
+
+-- We forego the use of lspconfig and instead configure our LSPs manually in
+-- the lsp/ directory.
+
+vim.lsp.enable({"lua_ls"})
+
