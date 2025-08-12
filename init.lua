@@ -579,10 +579,12 @@ vim.pack.add({
     "https://github.com/mason-org/mason.nvim",      -- LSP management
     "https://github.com/tpope/vim-fugitive",        -- Git integration
     "https://github.com/lewis6991/gitsigns.nvim",   -- Git signs
+    "https://github.com/kylechui/nvim-surround",    -- Surround text with delimiters
 })
 
 vim.cmd.colorscheme("catppuccin-frappe")
 require("mason").setup()
+require("nvim-surround").setup()
 
 -- ============================================================================
 -- LSP
