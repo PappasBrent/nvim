@@ -594,3 +594,7 @@ vim.lsp.enable({
   "clangd",
   "lua_ls",
 })
+
+-- Jump back to next and previous diagnostic
+vim.keymap.set("n", "]g", function() vim.diagnostic.jump({count = 1, float = true}) end)
+vim.keymap.set("n", "[g", function() vim.diagnostic.jump({count = -1, float = true}) end)
