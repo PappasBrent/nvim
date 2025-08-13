@@ -570,6 +570,17 @@ vim.pack.add({
     "https://github.com/tpope/vim-fugitive",        -- Git integration
     "https://github.com/lewis6991/gitsigns.nvim",   -- Git signs
     "https://github.com/kylechui/nvim-surround",    -- Surround text with delimiters
+    -- Problems with auto complete engines
+    -- coq: Can't configure properly without lazy; no jumping between function arguments
+    -- coc: Jumping between function arguments doesn't work; can't configure for lua
+    -- nvim-cmp: This works for now but needing to install so many plugins is annoying
+    "https://github.com/hrsh7th/cmp-nvim-lsp",
+    "https://github.com/hrsh7th/cmp-buffer",
+    "https://github.com/hrsh7th/cmp-path",
+    "https://github.com/hrsh7th/cmp-cmdline",
+    "https://github.com/hrsh7th/nvim-cmp",
+    "https://github.com/L3MON4D3/LuaSnip",
+    "https://github.com/saadparwaiz1/cmp_luasnip",
 })
 
 -- Ensure inactive plugins are not installed
