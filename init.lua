@@ -140,10 +140,6 @@ vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position"
 -- Quick config editing
 vim.keymap.set("n", "<leader>rc", ":e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
 
--- Enable omnicomplete by default
-vim.opt.completeopt = { "menuone", "noselect", "popup" } 
-
-
 -- ============================================================================
 -- USEFUL FUNCTIONS
 -- ============================================================================
