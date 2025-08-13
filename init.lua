@@ -91,6 +91,7 @@ vim.g.maplocalleader = " "                         -- Set local leader key (NEW)
 
 -- Clear search highlights
 vim.keymap.set("n", "<leader>c", ":nohlsearch<CR>", { desc = "Clear search highlights" })
+vim.keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode" })
 
 -- Y to EOL
 vim.keymap.set("n", "Y", "y$", { desc = "Yank to end of line" })
