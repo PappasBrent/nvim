@@ -479,7 +479,7 @@ local function word_count()
     local words = vim.fn.wordcount().words
     return "  " .. words .. " words "
   end
-  return ""
+    return "not a text file"
 end
 
 -- File size
@@ -519,6 +519,7 @@ end
 _G.mode_icon = mode_icon
 _G.git_branch = git_branch
 _G.file_type = file_type
+_G.word_count = word_count
 _G.file_size = file_size
 
 vim.cmd([[
