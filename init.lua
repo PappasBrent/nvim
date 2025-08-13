@@ -89,7 +89,7 @@ vim.opt.splitright = true                          -- Vertical splits go right
 vim.g.mapleader = " "                              -- Set leader key to space
 vim.g.maplocalleader = " "                         -- Set local leader key (NEW)
 
--- Normal mode mappings
+-- Clear search highlights
 vim.keymap.set("n", "<leader>c", ":nohlsearch<CR>", { desc = "Clear search highlights" })
 
 -- Y to EOL
