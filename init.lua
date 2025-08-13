@@ -513,7 +513,10 @@ local function mode_icon()
     ["!"] = "SHELL",
     t = "TERMINAL"
   }
-  return modes[mode] or "  " .. mode:upper()
+  if modes[mode] ~= nil then
+    return modes[mode]
+  end
+  return "  " .. mode:upper()
 end
 
 _G.mode_icon = mode_icon
