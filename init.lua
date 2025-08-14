@@ -9,92 +9,93 @@ vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
 
 -- Basic settings
-vim.opt.number = true                              -- Line numbers
-vim.opt.relativenumber = true                      -- Relative line numbers
-vim.opt.cursorline = true                          -- Highlight current line
-vim.opt.wrap = false                               -- Don't wrap lines
-vim.opt.scrolloff = 10                             -- Keep 10 lines above/below cursor 
-vim.opt.sidescrolloff = 8                          -- Keep 8 columns left/right of cursor
+vim.opt.number = true         -- Line numbers
+vim.opt.relativenumber = true -- Relative line numbers
+vim.opt.cursorline = true     -- Highlight current line
+vim.opt.wrap = false          -- Don't wrap lines
+vim.opt.scrolloff = 10        -- Keep 10 lines above/below cursor
+vim.opt.sidescrolloff = 8     -- Keep 8 columns left/right of cursor
 
 -- Indentation
 local tabsize = 4
-vim.opt.tabstop = tabsize                          -- Tab width
-vim.opt.shiftwidth = tabsize                       -- Indent width
-vim.opt.softtabstop = tabsize                      -- Soft tab stop
-vim.opt.expandtab = true                           -- Use spaces instead of tabs
-vim.opt.smartindent = true                         -- Smart auto-indenting
-vim.opt.autoindent = true                          -- Copy indent from current line
+vim.opt.tabstop = tabsize     -- Tab width
+vim.opt.shiftwidth = tabsize  -- Indent width
+vim.opt.softtabstop = tabsize -- Soft tab stop
+vim.opt.expandtab = true      -- Use spaces instead of tabs
+vim.opt.smartindent = true    -- Smart auto-indenting
+vim.opt.autoindent = true     -- Copy indent from current line
 
 -- Search settings
-vim.opt.ignorecase = true                          -- Case insensitive search
-vim.opt.smartcase = true                           -- Case sensitive if uppercase in search
-vim.opt.hlsearch = false                           -- Don't highlight search results 
-vim.opt.incsearch = true                           -- Show matches as you type
+vim.opt.ignorecase = true -- Case insensitive search
+vim.opt.smartcase = true  -- Case sensitive if uppercase in search
+vim.opt.hlsearch = false  -- Don't highlight search results
+vim.opt.incsearch = true  -- Show matches as you type
 
 -- Visual settings
-vim.opt.termguicolors = true                       -- Enable 24-bit colors
-vim.opt.signcolumn = "yes"                         -- Always show sign column
-vim.opt.colorcolumn = "80"                         -- Show column at 80 characters
-vim.opt.showmatch = true                           -- Highlight matching brackets
-vim.opt.matchtime = 2                              -- How long to show matching bracket
-vim.opt.cmdheight = 1                              -- Command line height
-vim.opt.completeopt = "menuone,noinsert,noselect"  -- Completion options 
-vim.opt.showmode = false                           -- Don't show mode in command line 
-vim.opt.pumheight = 10                             -- Popup menu height 
-vim.opt.pumblend = 10                              -- Popup menu transparency 
-vim.opt.winblend = 0                               -- Floating window transparency 
-vim.opt.conceallevel = 0                           -- Don't hide markup 
-vim.opt.concealcursor = ""                         -- Don't hide cursor line markup 
-vim.opt.lazyredraw = true                          -- Don't redraw during macros
-vim.opt.synmaxcol = 300                            -- Syntax highlighting limit 
+vim.opt.termguicolors = true                      -- Enable 24-bit colors
+vim.opt.signcolumn = "yes"                        -- Always show sign column
+vim.opt.colorcolumn = "80"                        -- Show column at 80 characters
+vim.opt.showmatch = true                          -- Highlight matching brackets
+vim.opt.matchtime = 2                             -- How long to show matching bracket
+vim.opt.cmdheight = 1                             -- Command line height
+vim.opt.completeopt = "menuone,noinsert,noselect" -- Completion options
+vim.opt.showmode = false                          -- Don't show mode in command line
+vim.opt.pumheight = 10                            -- Popup menu height
+vim.opt.pumblend = 10                             -- Popup menu transparency
+vim.opt.winblend = 0                              -- Floating window transparency
+vim.opt.conceallevel = 0                          -- Don't hide markup
+vim.opt.concealcursor = ""                        -- Don't hide cursor line markup
+vim.opt.lazyredraw = true                         -- Don't redraw during macros
+vim.opt.synmaxcol = 300                           -- Syntax highlighting limit
 
 -- File handling
-vim.opt.backup = false                                      -- Don't create backup files
-vim.opt.writebackup = false                                 -- Don't create backup before writing
-vim.opt.swapfile = false                                    -- Don't create swap files
-vim.opt.undofile = true                                     -- Persistent undo
-vim.opt.undodir = vim.fn.expand("~/.config/nvim/undodir")   -- Undo directory
-vim.opt.updatetime = 300                                    -- Faster completion
-vim.opt.timeoutlen = 500                                    -- Key timeout duration
-vim.opt.ttimeoutlen = 0                                     -- Key code timeout
-vim.opt.autoread = true                                     -- Auto reload files changed outside vim
-vim.opt.autowrite = false                                   -- Don't auto save
+vim.opt.backup = false                                    -- Don't create backup files
+vim.opt.writebackup = false                               -- Don't create backup before writing
+vim.opt.swapfile = false                                  -- Don't create swap files
+vim.opt.undofile = true                                   -- Persistent undo
+vim.opt.undodir = vim.fn.expand("~/.config/nvim/undodir") -- Undo directory
+vim.opt.updatetime = 300                                  -- Faster completion
+vim.opt.timeoutlen = 500                                  -- Key timeout duration
+vim.opt.ttimeoutlen = 0                                   -- Key code timeout
+vim.opt.autoread = true                                   -- Auto reload files changed outside vim
+vim.opt.autowrite = false                                 -- Don't auto save
 
 -- Behavior settings
-vim.opt.hidden = true                              -- Allow hidden buffers
-vim.opt.errorbells = false                         -- No error bells
-vim.opt.backspace = "indent,eol,start"             -- Better backspace behavior
-vim.opt.autochdir = false                          -- Don't auto change directory
-vim.opt.path:append("**")                          -- include subdirectories in search
-vim.opt.selection = "exclusive"                    -- Selection behavior
-vim.opt.mouse = "a"                                -- Enable mouse support
-vim.opt.clipboard:append("unnamedplus")            -- Use system clipboard
-vim.opt.modifiable = true                          -- Allow buffer modifications
-vim.opt.encoding = "UTF-8"                         -- Set encoding
+vim.opt.hidden = true                   -- Allow hidden buffers
+vim.opt.errorbells = false              -- No error bells
+vim.opt.backspace = "indent,eol,start"  -- Better backspace behavior
+vim.opt.autochdir = false               -- Don't auto change directory
+vim.opt.path:append("**")               -- include subdirectories in search
+vim.opt.selection = "exclusive"         -- Selection behavior
+vim.opt.mouse = "a"                     -- Enable mouse support
+vim.opt.clipboard:append("unnamedplus") -- Use system clipboard
+vim.opt.modifiable = true               -- Allow buffer modifications
+vim.opt.encoding = "UTF-8"              -- Set encoding
 
 -- Cursor settings
-vim.opt.guicursor = "n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
+vim.opt.guicursor =
+"n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 
 -- Folding settings
-vim.opt.foldmethod = "expr"                        -- Use expression for folding
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"    -- Use treesitter for folding
-vim.opt.foldlevel = 99                             -- Start with all folds open
+vim.opt.foldmethod = "expr"                     -- Use expression for folding
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- Use treesitter for folding
+vim.opt.foldlevel = 99                          -- Start with all folds open
 
 -- Split behavior
-vim.opt.splitbelow = true                          -- Horizontal splits go below
-vim.opt.splitright = true                          -- Vertical splits go right
+vim.opt.splitbelow = true -- Horizontal splits go below
+vim.opt.splitright = true -- Vertical splits go right
 
 -- Key mappings
-vim.g.mapleader = " "                              -- Set leader key to space
-vim.g.maplocalleader = " "                         -- Set local leader key (NEW)
+vim.g.mapleader = " "      -- Set leader key to space
+vim.g.maplocalleader = " " -- Set local leader key (NEW)
 
 -- Run build script, if it exists
-vim.keymap.set({"n", "i"}, "<C-b>", function()
+vim.keymap.set({ "n", "i" }, "<C-b>", function()
   if vim.fn.filereadable("./build.sh") then
     vim.opt.makeprg = "./build.sh"
   end
   vim.cmd("make")
-end, { desc = "Set and run makeprg"})
+end, { desc = "Set and run makeprg" })
 
 -- Clear search highlights
 vim.keymap.set("n", "<leader>c", ":nohlsearch<CR>", { desc = "Clear search highlights" })
@@ -172,9 +173,9 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Copy Full File-Path
 vim.keymap.set("n", "<leader>pa", function()
-	local path = vim.fn.expand("%:p")
-	vim.fn.setreg("+", path)
-	print("file:", path)
+  local path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", path)
+  print("file:", path)
 end)
 
 -- Highlight yanked text
@@ -201,17 +202,17 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 -- Update search count
 function UpdateSearchCount()
   local maxcount = 1024
-  local searchcount = vim.fn.searchcount({maxcount = maxcount})
+  local searchcount = vim.fn.searchcount({ maxcount = maxcount })
   if searchcount.incomplete == 0 then
-      print("Match " .. searchcount.current .. "/" .. searchcount.total)
+    print("Match " .. searchcount.current .. "/" .. searchcount.total)
   elseif searchcount.incomplete == 1 then
-      print("Timeout")
+    print("Timeout")
   else -- searchcount.incomplete == 2
-      if searchcount.current >= maxcount+1 then
-        print("Match " .. ">" .. maxcount .. "/" .. ">" .. maxcount)
-      else
-        print("Match " .. searchcount.current .. "/" .. ">" .. maxcount)
-      end
+    if searchcount.current >= maxcount + 1 then
+      print("Match " .. ">" .. maxcount .. "/" .. ">" .. maxcount)
+    else
+      print("Match " .. searchcount.current .. "/" .. ">" .. maxcount)
+    end
   end
 end
 
@@ -344,7 +345,7 @@ local function FloatingTerminal()
   terminal_state.is_open = true
   vim.cmd("startinsert")
 
-  -- Set up auto-close on buffer leave 
+  -- Set up auto-close on buffer leave
   vim.api.nvim_create_autocmd("BufLeave", {
     buffer = terminal_state.buf,
     callback = function()
@@ -372,8 +373,8 @@ end, { noremap = true, silent = true, desc = "Close floating terminal from termi
 -- ============================================================================
 
 -- Tab display settings
-vim.opt.showtabline = 1  -- Always show tabline (0=never, 1=when multiple tabs, 2=always)
-vim.opt.tabline = ''     -- Use default tabline (empty string uses built-in)
+vim.opt.showtabline = 1 -- Always show tabline (0=never, 1=when multiple tabs, 2=always)
+vim.opt.tabline = ''    -- Use default tabline (empty string uses built-in)
 
 -- Transparent tabline appearance
 vim.cmd([[
@@ -487,7 +488,7 @@ local function word_count()
     local words = vim.fn.wordcount().words
     return "  " .. words .. " words "
   end
-    return "not a text file"
+  return "not a text file"
 end
 
 -- File size
@@ -511,11 +512,11 @@ local function mode_icon()
     i = "INSERT",
     v = "VISUAL",
     V = "V-LINE",
-    ["\22"] = "V-BLOCK",  -- Ctrl-V
+    ["\22"] = "V-BLOCK", -- Ctrl-V
     c = "COMMAND",
     s = "SELECT",
     S = "S-LINE",
-    ["\19"] = "S-BLOCK",  -- Ctrl-S
+    ["\19"] = "S-BLOCK", -- Ctrl-S
     R = "REPLACE",
     r = "REPLACE",
     ["!"] = "SHELL",
@@ -539,27 +540,27 @@ vim.cmd([[
 
 -- Function to change statusline based on window focus
 local function setup_dynamic_statusline()
-  vim.api.nvim_create_autocmd({"WinEnter", "BufEnter"}, {
+  vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
     callback = function()
-    vim.opt_local.statusline = table.concat {
-      "  ",
-      "%#StatusLineBold#",
-      "%{v:lua.mode_icon()}",
-      "%#StatusLine#",
-      " │ %f %h%m%r",
-      "%{v:lua.git_branch()}",
-      " │ ",
-      "%{v:lua.file_type()}",
-      " | ",
-      "%{v:lua.file_size()}",
-      "%=",                     -- Right-align everything after this
-      "%l:%c  %P ",             -- Line:Column and Percentage
-    }
+      vim.opt_local.statusline = table.concat {
+        "  ",
+        "%#StatusLineBold#",
+        "%{v:lua.mode_icon()}",
+        "%#StatusLine#",
+        " │ %f %h%m%r",
+        "%{v:lua.git_branch()}",
+        " │ ",
+        "%{v:lua.file_type()}",
+        " | ",
+        "%{v:lua.file_size()}",
+        "%=",         -- Right-align everything after this
+        "%l:%c  %P ", -- Line:Column and Percentage
+      }
     end
   })
   vim.api.nvim_set_hl(0, "StatusLineBold", { bold = true })
 
-  vim.api.nvim_create_autocmd({"WinLeave", "BufLeave"}, {
+  vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
     callback = function()
       vim.opt_local.statusline = "  %f %h%m%r │ %{v:lua.file_type()} | %=  %l:%c   %P "
     end
@@ -573,29 +574,29 @@ setup_dynamic_statusline()
 -- ============================================================================
 
 vim.pack.add({
-    "https://github.com/catppuccin/nvim",           -- Color theme
-    "https://github.com/mason-org/mason.nvim",      -- LSP management
-    "https://github.com/tpope/vim-fugitive",        -- Git integration
-    "https://github.com/lewis6991/gitsigns.nvim",   -- Git signs
-    "https://github.com/kylechui/nvim-surround",    -- Surround text with delimiters
-    -- Problems with auto complete engines
-    -- coq: Can't configure properly without lazy; no jumping between function arguments
-    -- coc: Jumping between function arguments doesn't work; can't configure for lua
-    -- nvim-cmp: This works for now but needing to install so many plugins is annoying
-    "https://github.com/hrsh7th/cmp-nvim-lsp",
-    "https://github.com/hrsh7th/cmp-buffer",
-    "https://github.com/hrsh7th/cmp-path",
-    "https://github.com/hrsh7th/cmp-cmdline",
-    "https://github.com/hrsh7th/nvim-cmp",
-    "https://github.com/L3MON4D3/LuaSnip",
-    "https://github.com/saadparwaiz1/cmp_luasnip",
+  "https://github.com/catppuccin/nvim",         -- Color theme
+  "https://github.com/mason-org/mason.nvim",    -- LSP management
+  "https://github.com/tpope/vim-fugitive",      -- Git integration
+  "https://github.com/lewis6991/gitsigns.nvim", -- Git signs
+  "https://github.com/kylechui/nvim-surround",  -- Surround text with delimiters
+  -- Problems with auto complete engines
+  -- coq: Can't configure properly without lazy; no jumping between function arguments
+  -- coc: Jumping between function arguments doesn't work; can't configure for lua
+  -- nvim-cmp: This works for now but needing to install so many plugins is annoying
+  "https://github.com/hrsh7th/cmp-nvim-lsp",
+  "https://github.com/hrsh7th/cmp-buffer",
+  "https://github.com/hrsh7th/cmp-path",
+  "https://github.com/hrsh7th/cmp-cmdline",
+  "https://github.com/hrsh7th/nvim-cmp",
+  "https://github.com/L3MON4D3/LuaSnip",
+  "https://github.com/saadparwaiz1/cmp_luasnip",
 })
 
 -- Ensure inactive plugins are not installed
 for _, plugin in ipairs(vim.pack.get()) do
-    if false == plugin['active'] then
-        vim.pack.del({ plugin['spec']['name'] })
-    end
+  if false == plugin['active'] then
+    vim.pack.del({ plugin['spec']['name'] })
+  end
 end
 
 vim.cmd.colorscheme("catppuccin-frappe")
@@ -615,5 +616,8 @@ vim.lsp.enable({
 })
 
 -- Jump back to next and previous diagnostic
-vim.keymap.set("n", "]g", function() vim.diagnostic.jump({count = 1, float = true}) end)
-vim.keymap.set("n", "[g", function() vim.diagnostic.jump({count = -1, float = true}) end)
+vim.keymap.set("n", "]g", function() vim.diagnostic.jump({ count = 1, float = true }) end)
+vim.keymap.set("n", "[g", function() vim.diagnostic.jump({ count = -1, float = true }) end)
+
+-- Automatically format on save
+vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
