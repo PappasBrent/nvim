@@ -88,6 +88,14 @@ vim.opt.splitright = true                          -- Vertical splits go right
 vim.g.mapleader = " "                              -- Set leader key to space
 vim.g.maplocalleader = " "                         -- Set local leader key (NEW)
 
+-- Run build script, if it exists
+vim.keymap.set({"n", "i"}, "<C-b>", function()
+  if vim.fn.filereadable("./build.sh") then
+    vim.opt.makeprg = "./build.sh"
+  end
+  vim.cmd("make")
+end, { desc = "Set and run makeprg"})
+
 -- Clear search highlights
 vim.keymap.set("n", "<leader>c", ":nohlsearch<CR>", { desc = "Clear search highlights" })
 vim.keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode" })
