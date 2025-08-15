@@ -593,6 +593,8 @@ vim.pack.add({
     "https://github.com/hrsh7th/nvim-cmp",
     "https://github.com/L3MON4D3/LuaSnip",
     "https://github.com/saadparwaiz1/cmp_luasnip",
+  "https://github.com/mfussenegger/nvim-lint", -- Linter support
+  "https://github.com/stevearc/conform.nvim",  -- Formatter support
 })
 
 -- Ensure inactive plugins are not installed
@@ -622,5 +624,30 @@ vim.lsp.enable({
 vim.keymap.set("n", "]g", function() vim.diagnostic.jump({ count = 1, float = true }) end)
 vim.keymap.set("n", "[g", function() vim.diagnostic.jump({ count = -1, float = true }) end)
 
--- Automatically format on save
-vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+-- Custom linters
+local lint = require("lint")
+lint.linters_by_ft = {
+  markdown = { "markdownlint-cli2" },
+}
+
+vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost" }, {
+  callback = function()
+    lint.try_lint()
+  end,
+})
+
+-- Custom formatters
+local conform = require("conform")
+conform.setup({
+  formatters_by_ft = {
+    markdown = { "markdownlint-cli2", "prettierd" }, -- Run formatters in this order
+  },
+})
+
+conform.setup({
+  -- These options will be passed to conform.format()
+  format_on_save = {
+    timeout_ms = 500,        -- Wait 500ms for formatting to succeed
+    lsp_format = "fallback", -- Use LSP formatting as a fallback if available
+  },
+})
