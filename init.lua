@@ -89,7 +89,8 @@ vim.opt.splitright = true -- Vertical splits go right
 vim.g.mapleader = " "      -- Set leader key to space
 vim.g.maplocalleader = " " -- Set local leader key (NEW)
 
-vim.keymap.set({ "n", "i" }, "<A-q>", "gwap", { desc = "Rewrap text" })
+vim.keymap.set({ "n" }, "<A-q>", "gwap", { desc = "Rewrap text in normal mode" })
+vim.keymap.set({ "i" }, "<A-q>", ":gwap<CR>", { desc = "Rewrap text in inserg mode" })
 
 -- Run build script, if it exists
 vim.keymap.set({ "n", "i" }, "<C-b>", function()
