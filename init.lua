@@ -94,10 +94,10 @@ vim.keymap.set({ "i" }, "<A-q>", ":gwap<CR>", { desc = "Rewrap text in inserg m
 
 -- Run build script, if it exists
 vim.keymap.set({ "n", "i" }, "<C-b>", function()
-  if vim.fn.filereadable("./build.sh") then
-    vim.opt.makeprg = "./build.sh"
-  end
-  vim.cmd("make")
+    if vim.fn.filereadable("./build.sh") then
+        vim.opt.makeprg = "./build.sh"
+    end
+    vim.cmd("make")
 end, { desc = "Set and run makeprg" })
 
 -- Clear search highlights
@@ -157,9 +157,9 @@ vim.keymap.set("n", "<leader>rc", ":e ~/.config/nvim/init.lua<CR>", { desc = "Ed
 
 -- Set tab size and indentation width
 local function SetTabAndIndent(x)
-  vim.opt.tabstop = x
-  vim.opt.shiftwidth = x
-  vim.opt.softtabstop = x
+    vim.opt.tabstop = x
+    vim.opt.shiftwidth = x
+    vim.opt.softtabstop = x
 end
 
 -- Basic autocommands
@@ -167,95 +167,95 @@ local augroup = vim.api.nvim_create_augroup("UserConfig", {})
 
 -- Filetype-specific settings
 vim.api.nvim_create_autocmd("FileType", {
-  group = augroup,
-  pattern = { "lua" },
-  callback = function()
-    SetTabAndIndent(2)
-  end,
+    group = augroup,
+    pattern = { "lua" },
+    callback = function()
+        SetTabAndIndent(2)
+    end,
 })
 
 -- Copy Full File-Path
 vim.keymap.set("n", "<leader>pa", function()
-  local path = vim.fn.expand("%:p")
-  vim.fn.setreg("+", path)
-  print("file:", path)
+    local path = vim.fn.expand("%:p")
+    vim.fn.setreg("+", path)
+    print("file:", path)
 end)
 
 -- Highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
-  group = augroup,
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+    group = augroup,
+    callback = function()
+        vim.highlight.on_yank()
+    end,
 })
 
 -- Return to last edit position when opening files
 vim.api.nvim_create_autocmd("BufReadPost", {
-  group = augroup,
-  callback = function()
-    local mark = vim.api.nvim_buf_get_mark(0, '"')
-    local lcount = vim.api.nvim_buf_line_count(0)
-    local line = mark[1]
-    if line > 0 and line <= lcount then
-      pcall(vim.api.nvim_win_set_cursor, 0, mark)
-    end
-  end,
+    group = augroup,
+    callback = function()
+        local mark = vim.api.nvim_buf_get_mark(0, '"')
+        local lcount = vim.api.nvim_buf_line_count(0)
+        local line = mark[1]
+        if line > 0 and line <= lcount then
+            pcall(vim.api.nvim_win_set_cursor, 0, mark)
+        end
+    end,
 })
 
 -- Update search count
 function UpdateSearchCount()
-  local maxcount = 1024
-  local searchcount = vim.fn.searchcount({ maxcount = maxcount })
-  if searchcount.incomplete == 0 then
-    print("Match " .. searchcount.current .. "/" .. searchcount.total)
-  elseif searchcount.incomplete == 1 then
-    print("Timeout")
-  else -- searchcount.incomplete == 2
-    if searchcount.current >= maxcount + 1 then
-      print("Match " .. ">" .. maxcount .. "/" .. ">" .. maxcount)
-    else
-      print("Match " .. searchcount.current .. "/" .. ">" .. maxcount)
+    local maxcount = 1024
+    local searchcount = vim.fn.searchcount({ maxcount = maxcount })
+    if searchcount.incomplete == 0 then
+        print("Match " .. searchcount.current .. "/" .. searchcount.total)
+    elseif searchcount.incomplete == 1 then
+        print("Timeout")
+    else -- searchcount.incomplete == 2
+        if searchcount.current >= maxcount + 1 then
+            print("Match " .. ">" .. maxcount .. "/" .. ">" .. maxcount)
+        else
+            print("Match " .. searchcount.current .. "/" .. ">" .. maxcount)
+        end
     end
-  end
 end
 
 -- Auto-close terminal when process exits
 vim.api.nvim_create_autocmd("TermClose", {
-  group = augroup,
-  callback = function()
-    if vim.v.event.status == 0 then
-      vim.api.nvim_buf_delete(0, {})
-    end
-  end,
+    group = augroup,
+    callback = function()
+        if vim.v.event.status == 0 then
+            vim.api.nvim_buf_delete(0, {})
+        end
+    end,
 })
 
 -- Disable line numbers in terminal
 vim.api.nvim_create_autocmd("TermOpen", {
-  group = augroup,
-  callback = function()
-    vim.opt_local.number = false
-    vim.opt_local.relativenumber = false
-    vim.opt_local.signcolumn = "no"
-  end,
+    group = augroup,
+    callback = function()
+        vim.opt_local.number = false
+        vim.opt_local.relativenumber = false
+        vim.opt_local.signcolumn = "no"
+    end,
 })
 
 -- Auto-resize splits when window is resized
 vim.api.nvim_create_autocmd("VimResized", {
-  group = augroup,
-  callback = function()
-    vim.cmd("tabdo wincmd =")
-  end,
+    group = augroup,
+    callback = function()
+        vim.cmd("tabdo wincmd =")
+    end,
 })
 
 -- Create directories when saving files
 vim.api.nvim_create_autocmd("BufWritePre", {
-  group = augroup,
-  callback = function()
-    local dir = vim.fn.expand('<afile>:p:h')
-    if vim.fn.isdirectory(dir) == 0 then
-      vim.fn.mkdir(dir, 'p')
-    end
-  end,
+    group = augroup,
+    callback = function()
+        local dir = vim.fn.expand('<afile>:p:h')
+        if vim.fn.isdirectory(dir) == 0 then
+            vim.fn.mkdir(dir, 'p')
+        end
+    end,
 })
 
 -- Command-line completion
@@ -273,7 +273,7 @@ vim.opt.maxmempattern = 20000
 -- Create undo directory if it doesn't exist
 local undodir = vim.fn.expand("~/.config/nvim/undodir")
 if vim.fn.isdirectory(undodir) == 0 then
-  vim.fn.mkdir(undodir, "p")
+    vim.fn.mkdir(undodir, "p")
 end
 
 -- ============================================================================
@@ -282,92 +282,92 @@ end
 
 -- terminal
 local terminal_state = {
-  buf = nil,
-  win = nil,
-  is_open = false
+    buf = nil,
+    win = nil,
+    is_open = false
 }
 
 local function FloatingTerminal()
-  -- If terminal is already open, close it (toggle behavior)
-  if terminal_state.is_open and vim.api.nvim_win_is_valid(terminal_state.win) then
-    vim.api.nvim_win_close(terminal_state.win, false)
-    terminal_state.is_open = false
-    return
-  end
-
-  -- Create buffer if it doesn't exist or is invalid
-  if not terminal_state.buf or not vim.api.nvim_buf_is_valid(terminal_state.buf) then
-    terminal_state.buf = vim.api.nvim_create_buf(false, true)
-    -- Set buffer options for better terminal experience
-    vim.api.nvim_set_option_value('bufhidden', 'hide', { buf = terminal_state.buf })
-  end
-
-  -- Calculate window dimensions
-  local width = math.floor(vim.o.columns * 0.8)
-  local height = math.floor(vim.o.lines * 0.8)
-  local row = math.floor((vim.o.lines - height) / 2)
-  local col = math.floor((vim.o.columns - width) / 2)
-
-  -- Create the floating window
-  terminal_state.win = vim.api.nvim_open_win(terminal_state.buf, true, {
-    relative = 'editor',
-    width = width,
-    height = height,
-    row = row,
-    col = col,
-    style = 'minimal',
-    border = 'rounded',
-  })
-
-  -- Set transparency for the floating window
-  vim.api.nvim_set_option_value('winblend', 0, { win = terminal_state.win })
-
-  -- Set transparent background for the window
-  vim.api.nvim_set_option_value('winhighlight',
-    'Normal:FloatingTermNormal,FloatBorder:FloatingTermBorder',
-    { win = terminal_state.win })
-
-  -- Define highlight groups for transparency
-  vim.api.nvim_set_hl(0, "FloatingTermNormal", { bg = "none" })
-  vim.api.nvim_set_hl(0, "FloatingTermBorder", { bg = "none", })
-
-  -- Start terminal if not already running
-  local has_terminal = false
-  local lines = vim.api.nvim_buf_get_lines(terminal_state.buf, 0, -1, false)
-  for _, line in ipairs(lines) do
-    if line ~= "" then
-      has_terminal = true
-      break
-    end
-  end
-
-  if not has_terminal then
-    vim.fn.jobstart('$SHELL', { term = true })
-  end
-
-  terminal_state.is_open = true
-  vim.cmd("startinsert")
-
-  -- Set up auto-close on buffer leave
-  vim.api.nvim_create_autocmd("BufLeave", {
-    buffer = terminal_state.buf,
-    callback = function()
-      if terminal_state.is_open and vim.api.nvim_win_is_valid(terminal_state.win) then
+    -- If terminal is already open, close it (toggle behavior)
+    if terminal_state.is_open and vim.api.nvim_win_is_valid(terminal_state.win) then
         vim.api.nvim_win_close(terminal_state.win, false)
         terminal_state.is_open = false
-      end
-    end,
-    once = true
-  })
+        return
+    end
+
+    -- Create buffer if it doesn't exist or is invalid
+    if not terminal_state.buf or not vim.api.nvim_buf_is_valid(terminal_state.buf) then
+        terminal_state.buf = vim.api.nvim_create_buf(false, true)
+        -- Set buffer options for better terminal experience
+        vim.api.nvim_set_option_value('bufhidden', 'hide', { buf = terminal_state.buf })
+    end
+
+    -- Calculate window dimensions
+    local width = math.floor(vim.o.columns * 0.8)
+    local height = math.floor(vim.o.lines * 0.8)
+    local row = math.floor((vim.o.lines - height) / 2)
+    local col = math.floor((vim.o.columns - width) / 2)
+
+    -- Create the floating window
+    terminal_state.win = vim.api.nvim_open_win(terminal_state.buf, true, {
+        relative = 'editor',
+        width = width,
+        height = height,
+        row = row,
+        col = col,
+        style = 'minimal',
+        border = 'rounded',
+    })
+
+    -- Set transparency for the floating window
+    vim.api.nvim_set_option_value('winblend', 0, { win = terminal_state.win })
+
+    -- Set transparent background for the window
+    vim.api.nvim_set_option_value('winhighlight',
+        'Normal:FloatingTermNormal,FloatBorder:FloatingTermBorder',
+        { win = terminal_state.win })
+
+    -- Define highlight groups for transparency
+    vim.api.nvim_set_hl(0, "FloatingTermNormal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "FloatingTermBorder", { bg = "none", })
+
+    -- Start terminal if not already running
+    local has_terminal = false
+    local lines = vim.api.nvim_buf_get_lines(terminal_state.buf, 0, -1, false)
+    for _, line in ipairs(lines) do
+        if line ~= "" then
+            has_terminal = true
+            break
+        end
+    end
+
+    if not has_terminal then
+        vim.fn.jobstart('$SHELL', { term = true })
+    end
+
+    terminal_state.is_open = true
+    vim.cmd("startinsert")
+
+    -- Set up auto-close on buffer leave
+    vim.api.nvim_create_autocmd("BufLeave", {
+        buffer = terminal_state.buf,
+        callback = function()
+            if terminal_state.is_open and vim.api.nvim_win_is_valid(terminal_state.win) then
+                vim.api.nvim_win_close(terminal_state.win, false)
+                terminal_state.is_open = false
+            end
+        end,
+        once = true
+    })
 end
 
 -- Key mappings
 vim.keymap.set("n", "<leader>m", FloatingTerminal, { noremap = true, silent = true, desc = "Toggle floating terminal" })
 vim.keymap.set("t", "<Esc>", function()
-  if terminal_state.is_open then
-    vim.api.nvim_win_close(terminal_state.win, false)
-    terminal_state.is_open = false
-  end
+    if terminal_state.is_open then
+        vim.api.nvim_win_close(terminal_state.win, false)
+        terminal_state.is_open = false
+    end
 end, { noremap = true, silent = true, desc = "Close floating terminal from terminal mode" })
 
 
@@ -395,40 +395,40 @@ vim.keymap.set('n', '<leader>t<', ':tabmove -1<CR>', { desc = 'Move tab left' })
 
 -- Function to open file in new tab
 local function open_file_in_tab()
-  vim.ui.input({ prompt = 'File to open in new tab: ', completion = 'file' }, function(input)
-    if input and input ~= '' then
-      vim.cmd('tabnew ' .. input)
-    end
-  end)
+    vim.ui.input({ prompt = 'File to open in new tab: ', completion = 'file' }, function(input)
+        if input and input ~= '' then
+            vim.cmd('tabnew ' .. input)
+        end
+    end)
 end
 
 -- Function to duplicate current tab
 local function duplicate_tab()
-  local current_file = vim.fn.expand('%:p')
-  if current_file ~= '' then
-    vim.cmd('tabnew ' .. current_file)
-  else
-    vim.cmd('tabnew')
-  end
+    local current_file = vim.fn.expand('%:p')
+    if current_file ~= '' then
+        vim.cmd('tabnew ' .. current_file)
+    else
+        vim.cmd('tabnew')
+    end
 end
 
 -- Function to close tabs to the right
 local function close_tabs_right()
-  local current_tab = vim.fn.tabpagenr()
-  local last_tab = vim.fn.tabpagenr('$')
+    local current_tab = vim.fn.tabpagenr()
+    local last_tab = vim.fn.tabpagenr('$')
 
-  for i = last_tab, current_tab + 1, -1 do
-    vim.cmd(i .. 'tabclose')
-  end
+    for i = last_tab, current_tab + 1, -1 do
+        vim.cmd(i .. 'tabclose')
+    end
 end
 
 -- Function to close tabs to the left
 local function close_tabs_left()
-  local current_tab = vim.fn.tabpagenr()
+    local current_tab = vim.fn.tabpagenr()
 
-  for _ = current_tab - 1, 1, -1 do
-    vim.cmd('1tabclose')
-  end
+    for _ = current_tab - 1, 1, -1 do
+        vim.cmd('1tabclose')
+    end
 end
 
 -- Enhanced keybindings
@@ -439,13 +439,13 @@ vim.keymap.set('n', '<leader>tL', close_tabs_left, { desc = 'Close tabs to the l
 
 -- Function to close buffer but keep tab if it's the only buffer in tab
 local function smart_close_buffer()
-  local buffers_in_tab = #vim.fn.tabpagebuflist()
-  if buffers_in_tab > 1 then
-    vim.cmd('bdelete')
-  else
-    -- If it's the only buffer in tab, close the tab
-    vim.cmd('tabclose')
-  end
+    local buffers_in_tab = #vim.fn.tabpagebuflist()
+    if buffers_in_tab > 1 then
+        vim.cmd('bdelete')
+    else
+        -- If it's the only buffer in tab, close the tab
+        vim.cmd('tabclose')
+    end
 end
 vim.keymap.set('n', '<leader>bd', smart_close_buffer, { desc = 'Smart close buffer/tab' })
 
@@ -455,80 +455,80 @@ vim.keymap.set('n', '<leader>bd', smart_close_buffer, { desc = 'Smart close buff
 
 -- Git branch function
 local function git_branch()
-  local branch = vim.fn.system("git branch --show-current 2>/dev/null | tr -d '\n'")
-  if branch ~= "" then
-    return "  " .. branch .. " "
-  end
-  return ""
+    local branch = vim.fn.system("git branch --show-current 2>/dev/null | tr -d '\n'")
+    if branch ~= "" then
+        return "  " .. branch .. " "
+    end
+    return ""
 end
 
 -- File type with icon
 local function file_type()
-  local ft = vim.bo.filetype
-  local icons = {
-    lua = "[LUA]",
-    python = "[PY]",
-    javascript = "[JS]",
-    html = "[HTML]",
-    css = "[CSS]",
-    json = "[JSON]",
-    markdown = "[MD]",
-    vim = "[VIM]",
-    sh = "[SH]",
-  }
+    local ft = vim.bo.filetype
+    local icons = {
+        lua = "[LUA]",
+        python = "[PY]",
+        javascript = "[JS]",
+        html = "[HTML]",
+        css = "[CSS]",
+        json = "[JSON]",
+        markdown = "[MD]",
+        vim = "[VIM]",
+        sh = "[SH]",
+    }
 
-  if ft == "" then
-    return "  "
-  end
+    if ft == "" then
+        return "  "
+    end
 
-  return (icons[ft] or ft)
+    return (icons[ft] or ft)
 end
 
 -- Word count for text files
 local function word_count()
-  local ft = vim.bo.filetype
-  if ft == "markdown" or ft == "text" or ft == "tex" then
-    local words = vim.fn.wordcount().words
-    return "  " .. words .. " words "
-  end
-  return "not a text file"
+    local ft = vim.bo.filetype
+    if ft == "markdown" or ft == "text" or ft == "tex" then
+        local words = vim.fn.wordcount().words
+        return "  " .. words .. " words "
+    end
+    return "not a text file"
 end
 
 -- File size
 local function file_size()
-  local size = vim.fn.getfsize(vim.fn.expand('%'))
-  if size < 0 then return "" end
-  if size < 1024 then
-    return size .. "B "
-  elseif size < 1024 * 1024 then
-    return string.format("%.1fK", size / 1024)
-  else
-    return string.format("%.1fM", size / 1024 / 1024)
-  end
+    local size = vim.fn.getfsize(vim.fn.expand('%'))
+    if size < 0 then return "" end
+    if size < 1024 then
+        return size .. "B "
+    elseif size < 1024 * 1024 then
+        return string.format("%.1fK", size / 1024)
+    else
+        return string.format("%.1fM", size / 1024 / 1024)
+    end
 end
 
 -- Mode indicators with icons
 local function mode_icon()
-  local mode = vim.fn.mode()
-  local modes = {
-    n = "NORMAL",
-    i = "INSERT",
-    v = "VISUAL",
-    V = "V-LINE",
-    ["\22"] = "V-BLOCK", -- Ctrl-V
-    c = "COMMAND",
-    s = "SELECT",
-    S = "S-LINE",
-    ["\19"] = "S-BLOCK", -- Ctrl-S
-    R = "REPLACE",
-    r = "REPLACE",
-    ["!"] = "SHELL",
-    t = "TERMINAL"
-  }
-  if modes[mode] ~= nil then
-    return modes[mode]
-  end
-  return "  " .. mode:upper()
+    local mode = vim.fn.mode()
+    local modes = {
+        n = "NORMAL",
+        i = "INSERT",
+        v = "VISUAL",
+        V = "V-LINE",
+        ["\22"] = "V-BLOCK", -- Ctrl-V
+        c = "COMMAND",
+        s = "SELECT",
+        S = "S-LINE",
+        ["\19"] = "S-BLOCK", -- Ctrl-S
+        R = "REPLACE",
+        r = "REPLACE",
+        ["!"] = "SHELL",
+        t = "TERMINAL"
+    }
+    if modes[mode] ~= nil then
+        return modes[mode]
+    end
+    return "  " .. mode:upper()
 end
 
 _G.mode_icon = mode_icon
@@ -543,31 +543,31 @@ vim.cmd([[
 
 -- Function to change statusline based on window focus
 local function setup_dynamic_statusline()
-  vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
-    callback = function()
-      vim.opt_local.statusline = table.concat {
-        "  ",
-        "%#StatusLineBold#",
-        "%{v:lua.mode_icon()}",
-        "%#StatusLine#",
-        " │ %f %h%m%r",
-        "%{v:lua.git_branch()}",
-        " │ ",
-        "%{v:lua.file_type()}",
-        " | ",
-        "%{v:lua.file_size()}",
-        "%=",         -- Right-align everything after this
-        "%l:%c  %P ", -- Line:Column and Percentage
-      }
-    end
-  })
-  vim.api.nvim_set_hl(0, "StatusLineBold", { bold = true })
+    vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
+        callback = function()
+            vim.opt_local.statusline = table.concat {
+                "  ",
+                "%#StatusLineBold#",
+                "%{v:lua.mode_icon()}",
+                "%#StatusLine#",
+                " │ %f %h%m%r",
+                "%{v:lua.git_branch()}",
+                " │ ",
+                "%{v:lua.file_type()}",
+                " | ",
+                "%{v:lua.file_size()}",
+                "%=",         -- Right-align everything after this
+                "%l:%c  %P ", -- Line:Column and Percentage
+            }
+        end
+    })
+    vim.api.nvim_set_hl(0, "StatusLineBold", { bold = true })
 
-  vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
-    callback = function()
-      vim.opt_local.statusline = "  %f %h%m%r │ %{v:lua.file_type()} | %=  %l:%c   %P "
-    end
-  })
+    vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
+        callback = function()
+            vim.opt_local.statusline = "  %f %h%m%r │ %{v:lua.file_type()} | %=  %l:%c   %P "
+        end
+    })
 end
 
 setup_dynamic_statusline()
@@ -577,29 +577,29 @@ setup_dynamic_statusline()
 -- ============================================================================
 
 vim.pack.add({
-  "https://github.com/catppuccin/nvim",         -- Color theme
-  "https://github.com/mason-org/mason.nvim",    -- LSP management
-  "https://github.com/tpope/vim-fugitive",      -- Git integration
-  "https://github.com/lewis6991/gitsigns.nvim", -- Git signs
-  "https://github.com/kylechui/nvim-surround",  -- Surround text with delimiters
-  -- Problems with auto complete engines
-  -- coq: Can't configure properly without lazy; no jumping between function arguments
-  -- coc: Jumping between function arguments doesn't work; can't configure for lua
-  -- nvim-cmp: This works for now but needing to install so many plugins is annoying
-  "https://github.com/hrsh7th/cmp-nvim-lsp",
-  "https://github.com/hrsh7th/cmp-buffer",
-  "https://github.com/hrsh7th/cmp-path",
-  "https://github.com/hrsh7th/cmp-cmdline",
-  "https://github.com/hrsh7th/nvim-cmp",
-  "https://github.com/L3MON4D3/LuaSnip",
-  "https://github.com/saadparwaiz1/cmp_luasnip",
+    "https://github.com/catppuccin/nvim",         -- Color theme
+    "https://github.com/mason-org/mason.nvim",    -- LSP management
+    "https://github.com/tpope/vim-fugitive",      -- Git integration
+    "https://github.com/lewis6991/gitsigns.nvim", -- Git signs
+    "https://github.com/kylechui/nvim-surround",  -- Surround text with delimiters
+    -- Problems with auto complete engines
+    -- coq: Can't configure properly without lazy; no jumping between function arguments
+    -- coc: Jumping between function arguments doesn't work; can't configure for lua
+    -- nvim-cmp: This works for now but needing to install so many plugins is annoying
+    "https://github.com/hrsh7th/cmp-nvim-lsp",
+    "https://github.com/hrsh7th/cmp-buffer",
+    "https://github.com/hrsh7th/cmp-path",
+    "https://github.com/hrsh7th/cmp-cmdline",
+    "https://github.com/hrsh7th/nvim-cmp",
+    "https://github.com/L3MON4D3/LuaSnip",
+    "https://github.com/saadparwaiz1/cmp_luasnip",
 })
 
 -- Ensure inactive plugins are not installed
 for _, plugin in ipairs(vim.pack.get()) do
-  if false == plugin['active'] then
-    vim.pack.del({ plugin['spec']['name'] })
-  end
+    if false == plugin['active'] then
+        vim.pack.del({ plugin['spec']['name'] })
+    end
 end
 
 vim.cmd.colorscheme("catppuccin-frappe")
@@ -614,8 +614,8 @@ require("nvim-surround").setup()
 -- the lsp/ directory.
 
 vim.lsp.enable({
-  "clangd",
-  "lua_ls",
+    "clangd",
+    "lua_ls",
 })
 
 -- Jump back to next and previous diagnostic
