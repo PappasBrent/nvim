@@ -600,11 +600,11 @@ vim.pack.add({
 })
 
 -- Ensure inactive plugins are not installed
-for _, plugin in ipairs(vim.pack.get()) do
-  if false == plugin["active"] then
-    vim.pack.del({ plugin["spec"]["name"] })
-  end
-end
+-- for _, plugin in ipairs(vim.pack.get()) do
+--   if false == plugin["active"] then
+--     vim.pack.del({ plugin["spec"]["name"] })
+--   end
+-- end
 
 vim.cmd.colorscheme("catppuccin-frappe")
 require("mason").setup()
