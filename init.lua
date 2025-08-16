@@ -594,8 +594,9 @@ vim.pack.add({
   "https://github.com/L3MON4D3/LuaSnip",
   "https://github.com/saadparwaiz1/cmp_luasnip",
 
-  "https://github.com/mfussenegger/nvim-lint", -- Linter support
-  "https://github.com/stevearc/conform.nvim",  -- Formatter support
+  "https://github.com/mfussenegger/nvim-lint",  -- Linter support
+  "https://github.com/stevearc/conform.nvim",   -- Formatter support
+  "https://github.com/ray-x/lsp_signature.nvim" -- Show function signatures while typing function arguments
 })
 
 -- Ensure inactive plugins are not installed
@@ -608,6 +609,14 @@ end
 vim.cmd.colorscheme("catppuccin-frappe")
 require("mason").setup()
 require("nvim-surround").setup()
+require("lsp_signature").setup({
+  bind = true,
+  handler_opts = {
+    border = "rounded"
+  },
+  hint_enable = false,
+  timer_interval = 10,
+})
 
 -- ============================================================================
 -- LSP
