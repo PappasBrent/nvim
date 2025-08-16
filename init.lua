@@ -168,7 +168,7 @@ local augroup = vim.api.nvim_create_augroup("UserConfig", {})
 -- Filetype-specific settings
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup,
-  pattern = { "lua" },
+  pattern = { "lua", "markdown" },
   callback = function()
     SetTabAndIndent(2)
   end,
