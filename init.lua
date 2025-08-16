@@ -650,6 +650,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost" }, {
 local conform = require("conform")
 conform.setup({
   formatters_by_ft = {
+    json = { "prettierd" },
     markdown = { "markdownlint-cli2", "prettierd" }, -- Run formatters in this order
   },
 })
