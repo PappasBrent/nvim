@@ -594,9 +594,9 @@ vim.pack.add({
   "https://github.com/L3MON4D3/LuaSnip",
   "https://github.com/saadparwaiz1/cmp_luasnip",
 
-  "https://github.com/mfussenegger/nvim-lint",  -- Linter support
-  "https://github.com/stevearc/conform.nvim",   -- Formatter support
-  "https://github.com/ray-x/lsp_signature.nvim" -- Show function signatures while typing function arguments
+  "https://github.com/mfussenegger/nvim-lint",         -- Linter support
+  "https://github.com/stevearc/conform.nvim",          -- Formatter support
+  "https://github.com/ray-x/lsp_signature.nvim",       -- Show function signatures while typing function arguments
   "https://github.com/nvim-treesitter/nvim-treesitter" -- Treesitter for better syntax highlighting
 })
 
