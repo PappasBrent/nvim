@@ -2,7 +2,13 @@
 
 A suckless NeoVim Config
 
-Requires NeoVim 0.11.2 or later.
+## Requirements
+
+- NeoVim 0.11.2 or later (tip: build from source)
+
+- `tree-sitter-cli`: `cargo install tree-sitter-cli --locked`
+
+## Getting started
 
 Copy and enjoy it with:
 
