@@ -22,7 +22,7 @@ vim.opt.tabstop = tabsize     -- Tab width
 vim.opt.shiftwidth = tabsize  -- Indent width
 vim.opt.softtabstop = tabsize -- Soft tab stop
 vim.opt.expandtab = true      -- Use spaces instead of tabs
-vim.opt.smartindent = true    -- Smart auto-indenting
+vim.opt.smartindent = false   -- Disable auto-indenting to avoid interfering with filetype-specific formatting rules
 vim.opt.autoindent = true     -- Copy indent from current line
 
 -- Search settings
