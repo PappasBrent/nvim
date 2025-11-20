@@ -81,16 +81,18 @@ cmp.setup.cmdline({ "/", "?" }, {
   }
 })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(":", {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
-    { name = "path" }
-  }, {
-    { name = "cmdline" }
-  }),
-  matching = { disallow_symbol_nonprefix_matching = false }
-})
+-- Disable command line mappings until I can figure out how to prevent them
+-- from interfering with selecting previous and next commands in history.
+-- -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+-- cmp.setup.cmdline(":", {
+--   mapping = cmp.mapping.preset.cmdline(),
+--   sources = cmp.config.sources({
+--     { name = "path" }
+--   }, {
+--     { name = "cmdline" }
+--   }),
+--   matching = { disallow_symbol_nonprefix_matching = false }
+-- })
 
 -- Set up lspconfig.
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
