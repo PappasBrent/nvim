@@ -28,9 +28,7 @@ cmp.setup({
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping(function()
       if cmp.visible() then
-        cmp.close()
-      else
-        cmp.open()
+        cmp.abort()
       end
     end, { "i", "s" }),
     ["<C-e>"] = cmp.mapping.abort(),
