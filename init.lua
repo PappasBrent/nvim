@@ -18,7 +18,7 @@ vim.opt.sidescrolloff = 8     -- Keep 8 columns left/right of cursor
 
 -- Indentation
 local tabsize = 4
-vim.opt.tabstop = tabsize     -- Tab width
+-- vim.opt.tabstop = tabsize     -- Tab width
 vim.opt.shiftwidth = tabsize  -- Indent width
 vim.opt.softtabstop = tabsize -- Soft tab stop
 vim.opt.expandtab = true      -- Use spaces instead of tabs
