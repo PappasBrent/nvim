@@ -158,7 +158,6 @@ vim.keymap.set("n", "<leader>rl", ":so $MYVIMRC<CR>", { desc = "Reload config" }
 
 -- Set tab size and indentation width
 local function SetTabAndIndent(x)
-  vim.opt.tabstop = x
   vim.opt.shiftwidth = x
   vim.opt.softtabstop = x
 end
