@@ -1,6 +1,7 @@
 -- ================================================================================================
--- title : Suckless NeoVim Config
--- author: Radley E. Sidwell-lewis
+-- title:           Suckless NeoVim Config
+-- original author: Radley E. Sidwell-lewis
+-- modified by:     Brent Pappas
 -- ================================================================================================
 
 -- Transparency
